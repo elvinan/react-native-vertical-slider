@@ -179,11 +179,12 @@ export default class VerticalSlider extends React.Component<props, state> {
   }
 
   shouldComponentUpdate(nextProps: props, nextState: state) {
-    const shouldUpdate = nextProps.value && nextProps.value !== nextState.value
+    const shouldUpdate = nextProps.value && nextProps.value !== nextState.value;
     if (shouldUpdate) {
-      this._changeState(nextProps.value);
+      this._changeState(nextProps?.value || 0);
+      return true;
     }
-    return shouldUpdate;
+    return false;
   }
 
   render() {
